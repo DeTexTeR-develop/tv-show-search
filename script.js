@@ -13,9 +13,11 @@ form.addEventListener('submit',async function (e){
 
 function makeImg(shows) {
     for(let result of shows){
-        console.log(result.show.image.medium);
-        const img = document.createElement('img');
-        img.src = result.show.image.medium;
-        document.body.append(img)
+        if(result.show.image){
+            console.log(result.show.image.medium);
+            const img = document.createElement('img');
+            img.src = result.show.image.medium;
+            document.body.append(img)
+        }
     }
 }
