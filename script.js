@@ -5,10 +5,10 @@ form.addEventListener('submit',async function (e){
     e.preventDefault();
     console.dir(this); //to search the dir
     const searchTerm = form.elements.query.value;
-    
-    const res = await axios.get(` https://api.tvmaze.com/search/shows?q=${searchTerm}`)
+    const config = {params:{q: searchTerm}} //we can do param as a separate object
+    const res = await axios.get(` https://api.tvmaze.com/search/shows?q=${searchTerm}`, {params:{q:searchTerm}})
     makeImg(res.data)
-
+    form.elements.query.value = '';
 })
 
 function makeImg(shows) {
